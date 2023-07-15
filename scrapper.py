@@ -90,6 +90,12 @@ class ProductScrapper:
 
         print("\nNacional done.\n")
 
+    def test_scraping(self):
+        nacional = Nacional(NacionalCategory.AZUCAR_Y_EDULCORANTES)
+        products = nacional.get_products()
+        for p in products[0]:
+            print(p["productUrl"])
+
     def do_scraping(
         self,
         basket: bool,

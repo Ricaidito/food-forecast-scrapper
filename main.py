@@ -2,13 +2,14 @@ from scrapper import ProductScrapper
 
 
 def main():
+    # ProductScrapper().test_scraping()
     ProductScrapper().do_scraping(
-        basket=False,
-        micm=False,
+        basket=True,
+        micm=True,
         sirena=True,
-        jumbo=False,
+        jumbo=True,
         nacional=False,
-        upload_to_db=False,
+        upload_to_db=True,
     )
 
 
