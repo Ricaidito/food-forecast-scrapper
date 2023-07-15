@@ -7,12 +7,14 @@ from scraping.categories.sources.sirena_category import SirenaCategory
 
 class ProductMapper:
     CATEGORY_MAPPER = {
+        # MICMP
         MICMPCategory.CARNES: ProductCategory.CARNES,
         MICMPCategory.GRANOS: ProductCategory.GRANOS,
         MICMPCategory.EMBUTIDOS: ProductCategory.EMBUTIDOS,
         MICMPCategory.LACTEOS: ProductCategory.LACTEOS,
         MICMPCategory.PAN: ProductCategory.PAN,
         MICMPCategory.VEGETALES: ProductCategory.VEGETALES,
+        # Sirena
         SirenaCategory.CARNES: ProductCategory.CARNES,
         SirenaCategory.CONGELADOS: ProductCategory.CONGELADOS,
         SirenaCategory.DELI: ProductCategory.DELI,
@@ -36,6 +38,7 @@ class ProductMapper:
         SirenaCategory.FRUTAS_CONGELADAS: ProductCategory.FRUTAS_CONGELADAS,
         SirenaCategory.FRUTAS_FRESCAS: ProductCategory.FRUTAS_FRESCAS,
         SirenaCategory.VEGETALES_CONGELADOS: ProductCategory.VEGETALES_CONGELADOS,
+        # Nacional
         NacionalCategory.CARNES: ProductCategory.CARNES,
         NacionalCategory.PESCADOS: ProductCategory.PESCADOS_Y_MARISCOS,
         NacionalCategory.FRUTAS: ProductCategory.FRUTAS_FRESCAS,
@@ -83,6 +86,7 @@ class ProductMapper:
         NacionalCategory.SIDRAS: ProductCategory.LICORES,
         NacionalCategory.CIGARROS: ProductCategory.CIGARRILLOS,
         NacionalCategory.BEBE: ProductCategory.ALIMENTOS_PARA_BEBE,
+        # Jumbo
         JumboCategory.FRUTAS_FRESCAS: ProductCategory.FRUTAS_FRESCAS,
         JumboCategory.HORTALIZAS: ProductCategory.VEGETALES,
         JumboCategory.VIVERES: ProductCategory.DESPENSA,
