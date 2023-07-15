@@ -2,9 +2,10 @@ from scrapper import ProductScrapper
 
 
 ProductScrapper().do_scraping(
-    micm=True,
+    basket=False,
+    micm=False,
     sirena=True,
-    jumbo=True,
+    jumbo=False,
     nacional=False,
-    upload_to_db=True,
+    upload_to_db=False,
 )

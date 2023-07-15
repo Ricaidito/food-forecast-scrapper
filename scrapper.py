@@ -13,8 +13,8 @@ class ProductScrapper:
     def __init__(self):
         self.__product_service = ProductService()
 
-    def __scrap_micm(self, upload_to_db: bool = True):
-        print("\nStarting MICM scraping...\n")
+    def __scrap_basket(self, upload_to_db: bool = True):
+        print("\nStarting basket scraping...\n")
         micmp = MICMP(MICMPCategory.CARNES)
         print("\nGetting basic basket..")
         basic_basket = micmp.get_basic_basket()
@@ -22,8 +22,12 @@ class ProductScrapper:
         if upload_to_db:
             print("Uploading basic basket to db...")
             self.__product_service.upload_basket_to_db(basic_basket)
-            print("Basic basket uploaded successfully to db.\n")
+            print("Basic basket uploaded successfully to db.")
 
+        print("\nBasket done.\n")
+
+    def __scrap_micm(self, upload_to_db: bool = True):
+        print("\nStarting MICM scraping...\n")
         for category in MICMPCategory.__members__.values():
             micmp = MICMP(category)
             print(f"\nGetting prices for category: [{category}]")
@@ -88,6 +92,7 @@ class ProductScrapper:
 
     def do_scraping(
         self,
+        basket: bool,
         micm: bool,
         sirena: bool,
         jumbo: bool,
@@ -95,6 +100,8 @@ class ProductScrapper:
         upload_to_db: bool = True,
     ):
         print("\nStarting scraping...\n")
+        if basket:
+            self.__scrap_basket(upload_to_db)
         if micm:
             self.__scrap_micm(upload_to_db)
         if sirena:

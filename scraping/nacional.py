@@ -96,7 +96,3 @@ class Nacional:
     ) -> tuple[list[dict[str, str]], list[dict[str, Union[str, float]]]]:
         items, prices = self.__extract_products()
         return items, prices
-
-    def switch_category(self, category: NacionalCategory):
-        self.__category = category
-        self.__base_url = f"https://supermercadosnacional.com/{self.__category.value}"

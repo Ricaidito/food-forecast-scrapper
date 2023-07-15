@@ -63,10 +63,6 @@ class Jumbo:
 
         return items, prices
 
-    def switch_category(self, category: JumboCategory):
-        self.__category = category
-        self.__url = f"https://jumbo.com.do/supermercado/{self.__category.value}?product_list_limit=all"
-
     def get_products(
         self,
     ) -> tuple[list[dict[str, str]], list[dict[str, Union[str, float]]]]:

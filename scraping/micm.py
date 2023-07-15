@@ -158,6 +158,3 @@ class MICMP:
         html = self.__get_section_html()
         items, prices = self.__extract_section(html)
         return items, prices
-
-    def switch_category(self, category: MICMPCategory):
-        self.__category = category

@@ -38,7 +38,7 @@ class Sirena:
         return float(price.split("$")[1].replace(",", ""))
 
     def __extract_image_url(self, image: str) -> str:
-        return image.split("(")[1].split(")")[0]
+        return image.split("(")[1].split(")")[0].strip('"')
 
     def __get_products(
         self, html_content: str
@@ -72,10 +72,6 @@ class Sirena:
             prices.append(price_to_add)
 
         return items, prices
-
-    def switch_category(self, category: SirenaCategory):
-        self.__category = category
-        self.__base_url = f"https://sirena.do/products/category/{self.__category.value}?page=1&limit=0&sort=1"
 
     def get_products(
         self,
