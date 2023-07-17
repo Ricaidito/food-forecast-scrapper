@@ -24,6 +24,7 @@ class ProductMapper:
         SirenaCategory.LISTOS_PARA_COMER: ProductCategory.LISTOS_PARA_COMER,
         SirenaCategory.PANADERIA_Y_REPOSTERIA: ProductCategory.PANADERIA_Y_REPOSTERIA,
         SirenaCategory.PESCADOS_Y_MARISCOS: ProductCategory.PESCADOS_Y_MARISCOS,
+        SirenaCategory.PICADERAS: ProductCategory.PICADERAS,
         SirenaCategory.ALIMENTOS_PARA_BEBE: ProductCategory.ALIMENTOS_PARA_BEBE,
         SirenaCategory.AGUAS: ProductCategory.AGUAS,
         SirenaCategory.CERVEZAS: ProductCategory.CERVEZAS,
