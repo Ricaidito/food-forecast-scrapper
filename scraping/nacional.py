@@ -80,6 +80,7 @@ class Nacional:
                 "extractionDate": date,
             }
             price_to_add = {
+                "productName": name,
                 "productPrice": self.__parse_price(price),
                 "productUrl": item_url,
                 "date": date,

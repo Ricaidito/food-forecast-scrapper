@@ -24,8 +24,8 @@ class ProductMapper:
         SirenaCategory.LISTOS_PARA_COMER: ProductCategory.LISTOS_PARA_COMER,
         SirenaCategory.PANADERIA_Y_REPOSTERIA: ProductCategory.PANADERIA_Y_REPOSTERIA,
         SirenaCategory.PESCADOS_Y_MARISCOS: ProductCategory.PESCADOS_Y_MARISCOS,
-        SirenaCategory.PICADERAS: ProductCategory.PICADERAS,
-        SirenaCategory.ALIMENTOS_PARA_BEBE: ProductCategory.ALIMENTOS_PARA_BEBE,
+        SirenaCategory.PICADERAS: ProductCategory.DESPENSA,
+        # SirenaCategory.ALIMENTOS_PARA_BEBE: ProductCategory.ALIMENTOS_PARA_BEBE,
         SirenaCategory.AGUAS: ProductCategory.AGUAS,
         SirenaCategory.CERVEZAS: ProductCategory.CERVEZAS,
         SirenaCategory.HIDRATANTES: ProductCategory.HIDRATANTES,
@@ -39,6 +39,7 @@ class ProductMapper:
         SirenaCategory.FRUTAS_CONGELADAS: ProductCategory.FRUTAS_CONGELADAS,
         SirenaCategory.FRUTAS_FRESCAS: ProductCategory.FRUTAS_FRESCAS,
         SirenaCategory.VEGETALES_CONGELADOS: ProductCategory.VEGETALES_CONGELADOS,
+        SirenaCategory.VEGETALES_FRESCOS: ProductCategory.VEGETALES,
         # Nacional
         NacionalCategory.CARNES: ProductCategory.CARNES,
         NacionalCategory.PESCADOS: ProductCategory.PESCADOS_Y_MARISCOS,

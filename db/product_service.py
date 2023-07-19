@@ -11,7 +11,7 @@ class ProductService:
         self.__client = MongoClient(mongo_uri)
         self.__products_collection = self.__client[db_name]["products"]
         self.__prices_collection = self.__client[db_name]["prices"]
-        self.__basic_basket_collection = self.__client[db_name]["basic_basket"]
+        self.__basic_basket_collection = self.__client[db_name]["baskets"]
 
     def upload_basket_to_db(self, basket: dict[str, Union[str, float, list[dict]]]):
         self.__basic_basket_collection.insert_one(basket)
@@ -44,3 +44,9 @@ class ProductService:
 
         self.__prices_collection.insert_many(prices)
         print("Prices uploaded successfully to the database.")
+
+    def purge_collections(self):
+        self.__products_collection.drop()
+        self.__prices_collection.drop()
+        self.__basic_basket_collection.drop()
+        print("Collections purged successfully.")

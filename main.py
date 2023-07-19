@@ -10,6 +10,7 @@ def main():
         jumbo=True,
         nacional=False,
         upload_to_db=True,
+        purge_db=True,
     )
 
 

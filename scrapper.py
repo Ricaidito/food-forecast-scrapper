@@ -104,7 +104,13 @@ class ProductScrapper:
         jumbo: bool,
         nacional: bool,
         upload_to_db: bool = True,
+        purge_db: bool = False,
     ):
+        if purge_db:
+            print("\nPurging collections...\n")
+            self.__product_service.purge_collections()
+            print("\nCollections purged successfully.\n")
+
         print("\nStarting scraping...\n")
         if basket:
             self.__scrap_basket(upload_to_db)

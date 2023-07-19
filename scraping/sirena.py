@@ -64,6 +64,7 @@ class Sirena:
                 "extractionDate": date,
             }
             price_to_add = {
+                "productName": name,
                 "productPrice": self.__parse_price(price),
                 "productUrl": f"https://sirena.do{item_url}",
                 "date": date,
