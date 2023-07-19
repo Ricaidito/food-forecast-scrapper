@@ -4,10 +4,10 @@ from scrapper import ProductScrapper
 def main():
     # ProductScrapper().test_scraping()
     ProductScrapper().do_scraping(
-        basket=True,
-        micm=True,
-        sirena=True,
-        jumbo=True,
+        basket=False,
+        micm=False,
+        sirena=False,
+        jumbo=False,
         nacional=False,
         upload_to_db=True,
     )

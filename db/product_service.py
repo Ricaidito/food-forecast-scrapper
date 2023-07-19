@@ -11,7 +11,7 @@ class ProductService:
         self.__client = MongoClient(mongo_uri)
         self.__products_collection = self.__client[db_name]["products"]
         self.__prices_collection = self.__client[db_name]["prices"]
-        self.__basic_basket_collection = self.__client[db_name]["basic_basket"]
+        self.__basic_basket_collection = self.__client[db_name]["baskets"]
 
     def upload_basket_to_db(self, basket: dict[str, Union[str, float, list[dict]]]):
         self.__basic_basket_collection.insert_one(basket)
