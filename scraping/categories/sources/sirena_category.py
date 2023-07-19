@@ -12,7 +12,7 @@ class SirenaCategory(Enum):
     PANADERIA_Y_REPOSTERIA = "panaderia-y-reposteria"
     PESCADOS_Y_MARISCOS = "pescados-y-mariscos"
     PICADERAS = "picaderas"
-    ALIMENTOS_PARA_BEBE = "alimentos"
+    # ALIMENTOS_PARA_BEBE = "alimentos"
     AGUAS = "aguas"
     CERVEZAS = "cervezas"
     HIDRATANTES = "hidratantes"
