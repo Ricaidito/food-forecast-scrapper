@@ -44,3 +44,9 @@ class ProductService:
 
         self.__prices_collection.insert_many(prices)
         print("Prices uploaded successfully to the database.")
+
+    def purge_collections(self):
+        self.__products_collection.drop()
+        self.__prices_collection.drop()
+        self.__basic_basket_collection.drop()
+        print("Collections purged successfully.")
