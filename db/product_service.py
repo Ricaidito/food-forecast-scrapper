@@ -1,5 +1,6 @@
 from typing import Union
 from pymongo import MongoClient
+from datetime import datetime
 
 
 class ProductService:
@@ -12,6 +13,7 @@ class ProductService:
         self.__products_collection = self.__client[db_name]["products"]
         self.__prices_collection = self.__client[db_name]["prices"]
         self.__basic_basket_collection = self.__client[db_name]["baskets"]
+        self.__price_drops_collection = self.__client[db_name]["priceDrops"]
 
     def upload_basket_to_db(self, basket: dict[str, Union[str, float, list[dict]]]):
         self.__basic_basket_collection.insert_one(basket)
@@ -42,11 +44,43 @@ class ProductService:
         else:
             print("No new products to add.")
 
-        self.__prices_collection.insert_many(prices)
-        print("Prices uploaded successfully to the database.")
+        price_drop_entries = []
+        for price in prices:
+            existing_product = self.__prices_collection.find_one(
+                {"productUrl": price["productUrl"]}, sort=[("date", -1)]
+            )
+
+            if existing_product:
+                current_price = price["productPrice"]
+                previous_price = existing_product["productPrice"]
+                price_diff = current_price - previous_price
+
+                if current_price != previous_price:
+                    price_change_type = "rise" if price_diff > 0 else "drop"
+                    price_drop_entry = {
+                        "productName": price["productName"],
+                        "productUrl": price["productUrl"],
+                        "priceDifference": price_diff,
+                        "previousPrice": previous_price,
+                        "currentPrice": current_price,
+                        "priceChangeType": price_change_type,
+                        "date": datetime.now().isoformat(),
+                    }
+                    price_drop_entries.append(price_drop_entry)
+
+        if prices:
+            self.__prices_collection.insert_many(prices)
+            print("Prices uploaded successfully to the database.")
+
+        if price_drop_entries:
+            self.__price_drops_collection.insert_many(price_drop_entries)
+            print(f"{len(price_drop_entries)} price drops recorded.")
+        else:
+            print("No price drops found.")
 
     def purge_collections(self):
         self.__products_collection.drop()
         self.__prices_collection.drop()
         self.__basic_basket_collection.drop()
+        self.__price_drops_collection.drop()
         print("Collections purged successfully.")
