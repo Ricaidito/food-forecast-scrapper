@@ -39,8 +39,8 @@ class ProductService:
         ]
 
         if filtered_products:
-            added = self.__products_collection.insert_many(filtered_products)
-            print(f"Added {len(added.inserted_ids)} new products.")
+            added_products = self.__products_collection.insert_many(filtered_products)
+            print(f"Added {len(added_products.inserted_ids)} new products.")
         else:
             print("No new products to add.")
 
@@ -69,12 +69,14 @@ class ProductService:
                     price_drop_entries.append(price_drop_entry)
 
         if prices:
-            self.__prices_collection.insert_many(prices)
-            print("Prices uploaded successfully to the database.")
+            added_prices = self.__prices_collection.insert_many(prices)
+            print(f"Added {len(added_prices.inserted_ids)} new prices.")
 
         if price_drop_entries:
-            self.__price_drops_collection.insert_many(price_drop_entries)
-            print(f"{len(price_drop_entries)} price drops recorded.")
+            added_price_drops = self.__price_drops_collection.insert_many(
+                price_drop_entries
+            )
+            print(f"Added {len(added_price_drops.inserted_ids)} price drops.")
         else:
             print("No price drops found.")
 

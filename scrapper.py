@@ -90,31 +90,6 @@ class ProductScrapper:
 
         print("\nNacional done.\n")
 
-    def test_scraping(self):
-        from datetime import datetime
-
-        products = [
-            {
-                "productName": "Producto 1",
-                "category": "carnes",
-                "imageUrl": "https://sirena.do/products/category/carnes?page=1&limit=0&sort=1",
-                "productUrl": "https://sirena.do/products/category/carnes?page=1&limit=0&sort=1",
-                "origin": "sirena",
-                "extractionDate": datetime.now().isoformat(),
-            },
-        ]
-
-        prices = [
-            {
-                "productName": "Fajita de Res Lb.",
-                "productPrice": 20,
-                "productUrl": "https://sirena.do/products/index/fajita-de-res-lb",
-                "date": datetime.now().isoformat(),
-            },
-        ]
-
-        self.__product_service.upload_products_and_prices_to_db(products, prices)
-
     def do_scraping(
         self,
         basket: bool,
@@ -128,7 +103,6 @@ class ProductScrapper:
         if purge_db:
             print("\nPurging collections...\n")
             self.__product_service.purge_collections()
-            print("\nCollections purged successfully.\n")
 
         print("\nStarting scraping...\n")
         if basket:
@@ -142,3 +116,17 @@ class ProductScrapper:
         if nacional:
             self.__scrap_nacional(upload_to_db)
         print("\nScraping done.\n")
+
+    def test_scraping(self):
+        from datetime import datetime
+
+        products = []
+        prices = [
+            {
+                "productName": "Fajita de Res Lb.",
+                "productPrice": 20,
+                "productUrl": "https://sirena.do/products/index/fajita-de-res-lb",
+                "date": datetime.now().isoformat(),
+            },
+        ]
+        self.__product_service.upload_products_and_prices_to_db(products, prices)
