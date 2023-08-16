@@ -15,6 +15,9 @@ class ProductService:
         self.__basic_basket_collection = self.__client[db_name]["baskets"]
         self.__price_drops_collection = self.__client[db_name]["priceDrops"]
 
+    def __round_price(self, price: float) -> float:
+        return round(price, 2)
+
     def upload_basket_to_db(self, basket: dict[str, Union[str, float, list[dict]]]):
         self.__basic_basket_collection.insert_one(basket)
         print("Basket uploaded successfully to the database.")
@@ -60,7 +63,7 @@ class ProductService:
                     price_drop_entry = {
                         "productName": price["productName"],
                         "productUrl": price["productUrl"],
-                        "priceDifference": price_diff,
+                        "priceDifference": self.__round_price(price_diff),
                         "previousPrice": previous_price,
                         "currentPrice": current_price,
                         "priceChangeType": price_change_type,
