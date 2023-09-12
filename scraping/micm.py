@@ -1,3 +1,4 @@
+import os
 from typing import Union
 from selenium import webdriver
 from bs4 import BeautifulSoup
@@ -7,6 +8,7 @@ from selenium.common.exceptions import NoSuchElementException
 from datetime import datetime
 from scraping.categories.sources.micm_category import MICMPCategory
 from scraping.categories.product_mapper import ProductMapper
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 class MICMP:
@@ -18,6 +20,8 @@ class MICMP:
     def __get_basket_html(self) -> str:
         driver_options = ChromeOptions()
         driver_options.add_argument("--headless=new")
+
+        os.environ["PATH"] += os.pathsep + os.path.dirname(ChromeDriverManager().install())
 
         driver = webdriver.Chrome(options=driver_options)
 
