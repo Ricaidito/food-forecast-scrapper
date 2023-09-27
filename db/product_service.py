@@ -6,7 +6,7 @@ from datetime import datetime
 class ProductService:
     def __init__(
         self,
-        mongo_uri: str = "mongodb://localhost:27017/",
+        mongo_uri: str = "mongodb+srv://foodforecast5:EbHxnokdvUGc6S39@cluster0.0uehdj6.mongodb.net/?retryWrites=true&w=majority",
         db_name: str = "foodforecast",
     ):
         self.__client = MongoClient(mongo_uri)
