@@ -7,6 +7,7 @@ from scraping.jumbo import Jumbo
 from scraping.micm import MICMP
 from scraping.nacional import Nacional
 from scraping.sirena import Sirena
+import requests
 
 
 class ProductScrapper:
@@ -115,6 +116,14 @@ class ProductScrapper:
             self.__scrap_jumbo(upload_to_db)
         if nacional:
             self.__scrap_nacional(upload_to_db)
+
+
+
+        print("\nSending notifications\n")
+
+        result = requests.get("https://food-forecast-server.azurewebsites.net/price-drops/send")
+        print(result.text)
+
         print("\nScraping done.\n")
 
     def test_scraping(self):
