@@ -2,7 +2,6 @@ from scrapper import ProductScrapper
 
 
 def main():
-    # ProductScrapper().test_scraping()
     ProductScrapper().do_scraping(
         basket=True,
         micm=True,
